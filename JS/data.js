@@ -50,6 +50,16 @@ const products = [
 
 ];
 
+let cartCount = 0;
+let totalSum = 0;
+function addToCart(price) {
+    console.log(price)
+    cartCount++;
+    totalSum = totalSum + price;
+    document.getElementById("cart-total").innerText = cartCount;
+    document.getElementById("cart-count").innerText = cartCount;
+    document.getElementById("sum-total").innerText = totalSum;
+}
 function showProduct() {
     for (const product of products) {
         // console.log(product)
@@ -67,13 +77,13 @@ function showProduct() {
                         <p class="text-xl">$ ${product.price}</p>
                     </div>
                     <div class="card-actions">
-                        <button class="btn btn-success text-white">Buy Now</button>
+                        <button onclick="addToCart(${product.price})" class="btn btn-success text-white">Buy Now</button>
                     </div>
                 </div>
             </div>
         `
         document.getElementById("product-container").append(productCard)
     }
+    
 }
-
 showProduct()
